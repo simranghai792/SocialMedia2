@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const path = require("path");
 
-// MongoDB connection
+// This database is Not hosted on mongo atlas websites, that why it showing error in code.
 const Mongo_Url = 'mongodb://localhost:27017/social';
 main()
 .then(() => console.log('MongoDB is connected'))
@@ -16,7 +16,9 @@ async function main(){
 }
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://frontendsocial.netlify.app'    //connect it to react.js
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -100,7 +102,6 @@ app.get('/api/users', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch users' });
   }
 });
-
 
 app.listen(8080, () => {
   console.log(`App is listening to port 8080`);
