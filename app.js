@@ -16,9 +16,7 @@ async function main(){
 }
 
 // Middleware
-app.use(cors({
-  origin: 'https://frontendsocial.netlify.app'
-}));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
